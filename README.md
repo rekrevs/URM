@@ -6,9 +6,13 @@ Universal transformers (UTs) have been widely used for complex reasoning tasks s
 
 
 ## Installation
-
 ```bash
 pip install -r requirements.txt
+```
+
+## Login Wandb
+```bash
+wandb login YOUR_API_KEY
 ```
 
 ## Preparing Data
