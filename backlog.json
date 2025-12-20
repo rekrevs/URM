@@ -1,12 +1,51 @@
 {
   "version": "2.0.0",
-  "next_id": 2,
+  "next_id": 9,
   "tasks": [
     {
       "id": "T-0001",
-      "status": "ONGOING",
-      "summary": "Project setup and initial verification",
-      "phase": "VERIFYING"
+      "status": "DONE",
+      "summary": "Project setup and initial verification"
+    },
+    {
+      "id": "T-0005",
+      "status": "DONE",
+      "summary": "Configure Wandb for experiment tracking"
+    },
+    {
+      "id": "T-0006",
+      "status": "READY",
+      "summary": "Prepare ARC training dataset"
+    },
+    {
+      "id": "T-0008",
+      "status": "BLOCKED",
+      "summary": "Launch ICE training pod",
+      "after": ["T-0006"]
+    },
+    {
+      "id": "T-0002",
+      "status": "BLOCKED",
+      "summary": "Install PyTorch with CUDA support on ICE pod",
+      "after": ["T-0008"]
+    },
+    {
+      "id": "T-0003",
+      "status": "BLOCKED",
+      "summary": "Install flash-attn library on ICE pod",
+      "after": ["T-0002"]
+    },
+    {
+      "id": "T-0004",
+      "status": "BLOCKED",
+      "summary": "Fix adam-atan2 optimizer for CUDA on ICE pod",
+      "after": ["T-0002"]
+    },
+    {
+      "id": "T-0007",
+      "status": "BLOCKED",
+      "summary": "End-to-end training verification on ICE",
+      "after": ["T-0003", "T-0004", "T-0005"]
     }
   ]
 }
