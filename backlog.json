@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "next_id": 9,
+  "next_id": 10,
   "tasks": [
     {
       "id": "T-0001",
@@ -25,19 +25,19 @@
     },
     {
       "id": "T-0002",
-      "status": "READY",
+      "status": "DONE",
       "summary": "Install PyTorch with CUDA support on ICE pod",
       "after": ["T-0008"]
     },
     {
       "id": "T-0003",
-      "status": "BLOCKED",
+      "status": "READY",
       "summary": "Install flash-attn library on ICE pod",
       "after": ["T-0002"]
     },
     {
       "id": "T-0004",
-      "status": "BLOCKED",
+      "status": "READY",
       "summary": "Fix adam-atan2 optimizer for CUDA on ICE pod",
       "after": ["T-0002"]
     },
@@ -46,6 +46,12 @@
       "status": "BLOCKED",
       "summary": "End-to-end training verification on ICE",
       "after": ["T-0003", "T-0004", "T-0005"]
+    },
+    {
+      "id": "T-0009",
+      "status": "BLOCKED",
+      "summary": "Explore building Docker image with all URM dependencies",
+      "after": ["T-0007"]
     }
   ]
 }

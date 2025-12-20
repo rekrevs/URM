@@ -44,6 +44,7 @@ URM/
 │   └── cfg_eval.yaml
 ├── evaluators/           # Evaluation code
 │   └── arc.py            # ARC evaluation
+├── ice/                  # ICE cluster tools (see ice/README.md)
 ├── data/                 # Generated datasets
 ├── kaggle/               # Raw ARC data
 ├── scripts/              # Training scripts
@@ -75,6 +76,19 @@ python pretrain.py arch=urm_base batch_size=32
 ```
 
 See `config/` for available options.
+
+## ICE GPU Cluster
+
+For training on the ICE datacenter, see `ice/README.md`. Quick reference:
+
+```bash
+./ice/gpus.sh                            # Check available GPUs
+./ice/train.sh <name> [gpu_type] [count] # Launch training pod
+./ice/sync.sh <name>                     # Sync code to pod
+./ice/shell.sh <name>                    # Shell into pod
+./ice/status.sh                          # Check all URM pods
+./ice/stop.sh <name>                     # Stop pod (stops billing!)
+```
 
 ## Verification
 
