@@ -119,7 +119,9 @@ def load_config_from_checkpoint(checkpoint_path: Path) -> PretrainConfig:
     m = re.search(r"\bL_cycles:\s*(\d+)", raw)
     L_cycles = int(m.group(1)) if m else 6
 
-    arch_name = "loop.v22@LoopedTransformer"
+    # Try to extract arch name from config, default to URM
+    m = re.search(r"\bname:\s*([\w.@]+)", raw)
+    arch_name = m.group(1) if m else "urm.urm@URM"
 
     # -------- arch.loss 字段无法从 clean 找到，填入正确值 --------
     arch_loss = {
