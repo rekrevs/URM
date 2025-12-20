@@ -14,12 +14,12 @@
     },
     {
       "id": "T-0006",
-      "status": "READY",
+      "status": "DONE",
       "summary": "Prepare ARC training dataset"
     },
     {
       "id": "T-0008",
-      "status": "BLOCKED",
+      "status": "READY",
       "summary": "Launch ICE training pod",
       "after": ["T-0006"]
     },
