@@ -10,8 +10,14 @@ import math
 
 try:
     from flash_attn_interface import flash_attn_func
+    HAS_FLASH_ATTN = True
 except ImportError:
-    from flash_attn import flash_attn_func
+    try:
+        from flash_attn import flash_attn_func
+        HAS_FLASH_ATTN = True
+    except ImportError:
+        HAS_FLASH_ATTN = False
+        flash_attn_func = None
 
 from models.common import trunc_normal_init_
 
@@ -126,10 +132,20 @@ class Attention(nn.Module):
             cos, sin = cos_sin
             query, key = apply_rotary_pos_emb(query, key, cos, sin)
 
-        # flash attn
-        attn_output = flash_attn_func(q=query, k=key, v=value, causal=self.causal)
-        if isinstance(attn_output, tuple):  # fa2 and fa3 compatibility
-            attn_output = attn_output[0]
+        # Attention computation
+        if HAS_FLASH_ATTN:
+            # flash attn expects [batch, seq, heads, head_dim]
+            attn_output = flash_attn_func(q=query, k=key, v=value, causal=self.causal)
+            if isinstance(attn_output, tuple):  # fa2 and fa3 compatibility
+                attn_output = attn_output[0]
+        else:
+            # Fallback to PyTorch native SDPA
+            # SDPA expects [batch, heads, seq, head_dim]
+            query = query.transpose(1, 2)
+            key = key.transpose(1, 2)
+            value = value.transpose(1, 2)
+            attn_output = scaled_dot_product_attention(query, key, value, is_causal=self.causal)
+            attn_output = attn_output.transpose(1, 2)
 
         # attn_output: [batch_size, num_heads, seq_len, head_dim]
         attn_output = attn_output.view(batch_size, seq_len, self.output_size)  # type: ignore
