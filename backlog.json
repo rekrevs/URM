@@ -19,13 +19,13 @@
     },
     {
       "id": "T-0008",
-      "status": "READY",
+      "status": "DONE",
       "summary": "Launch ICE training pod",
       "after": ["T-0006"]
     },
     {
       "id": "T-0002",
-      "status": "BLOCKED",
+      "status": "READY",
       "summary": "Install PyTorch with CUDA support on ICE pod",
       "after": ["T-0008"]
     },
