@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "next_id": 15,
+  "next_id": 16,
   "tasks": [
     {
       "id": "T-0001",
@@ -70,8 +70,13 @@
     },
     {
       "id": "T-0014",
-      "status": "READY",
+      "status": "DONE",
       "summary": "Migrate wandb data to online"
+    },
+    {
+      "id": "T-0015",
+      "status": "DONE",
+      "summary": "Launch full training run on ICE"
     }
   ]
 }
