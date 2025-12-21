@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "next_id": 10,
+  "next_id": 15,
   "tasks": [
     {
       "id": "T-0001",
@@ -30,28 +30,48 @@
       "after": ["T-0008"]
     },
     {
+      "id": "T-0010",
+      "status": "DONE",
+      "summary": "Build and push URM Docker image to ICE registry"
+    },
+    {
+      "id": "T-0011",
+      "status": "DONE",
+      "summary": "Update train.sh to use custom URM image",
+      "after": ["T-0010"]
+    },
+    {
       "id": "T-0003",
-      "status": "READY",
-      "summary": "Install flash-attn library on ICE pod",
-      "after": ["T-0002"]
+      "status": "DONE",
+      "summary": "Verify flash-attn in custom image",
+      "after": ["T-0011"]
     },
     {
       "id": "T-0004",
-      "status": "READY",
-      "summary": "Fix adam-atan2 optimizer for CUDA on ICE pod",
-      "after": ["T-0002"]
+      "status": "DONE",
+      "summary": "Verify adam-atan2 in custom image",
+      "after": ["T-0011"]
     },
     {
       "id": "T-0007",
-      "status": "BLOCKED",
+      "status": "DONE",
       "summary": "End-to-end training verification on ICE",
       "after": ["T-0003", "T-0004", "T-0005"]
     },
     {
-      "id": "T-0009",
-      "status": "BLOCKED",
-      "summary": "Explore building Docker image with all URM dependencies",
-      "after": ["T-0007"]
+      "id": "T-0012",
+      "status": "DONE",
+      "summary": "Document URM custom Docker image setup for ICE"
+    },
+    {
+      "id": "T-0013",
+      "status": "DONE",
+      "summary": "Fix evaluator single-GPU distributed bug"
+    },
+    {
+      "id": "T-0014",
+      "status": "READY",
+      "summary": "Migrate wandb data to online"
     }
   ]
 }
