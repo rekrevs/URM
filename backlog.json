@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "next_id": 16,
+  "next_id": 19,
   "tasks": [
     {
       "id": "T-0001",
@@ -77,6 +77,22 @@
       "id": "T-0015",
       "status": "DONE",
       "summary": "Launch full training run on ICE"
+    },
+    {
+      "id": "T-0016",
+      "status": "DONE",
+      "summary": "Prepare complete 1000 augmentations dataset"
+    },
+    {
+      "id": "T-0017",
+      "status": "ONGOING",
+      "phase": "IMPLEMENTING",
+      "summary": "Run 5% validation training with wandb online, delete pod when done"
+    },
+    {
+      "id": "T-0018",
+      "status": "DONE",
+      "summary": "Prepare Sudoku dataset"
     }
   ]
 }
