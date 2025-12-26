@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "next_id": 19,
+  "next_id": 22,
   "tasks": [
     {
       "id": "T-0001",
@@ -85,14 +85,29 @@
     },
     {
       "id": "T-0017",
-      "status": "ONGOING",
-      "phase": "IMPLEMENTING",
+      "status": "DONE",
       "summary": "Run 5% validation training with wandb online, delete pod when done"
     },
     {
       "id": "T-0018",
       "status": "DONE",
       "summary": "Prepare Sudoku dataset"
+    },
+    {
+      "id": "T-0019",
+      "status": "DONE",
+      "summary": "Train and evaluate URM on Sudoku dataset"
+    },
+    {
+      "id": "T-0020",
+      "status": "READY",
+      "summary": "Implement automated training monitor with auto-kill on collapse"
+    },
+    {
+      "id": "T-0021",
+      "status": "ONGOING",
+      "phase": "IMPLEMENTING",
+      "summary": "Continue Sudoku training with lower LR and paper's batch size on 4x H100"
     }
   ]
 }
